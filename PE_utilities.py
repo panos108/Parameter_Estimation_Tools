@@ -2,27 +2,23 @@ from casadi import *
 import numpy as np
 
 class Reactor_pfr_model:
-    def __init__(self, A):
+    def __init__(self, A=None):
+        assert A==None, "Houston we've got a problem, the A is not given."
 
         self.A = A
         self.nx = A.shape[0]
         self.ntheta = A.shape[1]*2
         self.nu = 4
-    def plant_model_real(self, sensitivity=False, transformation=True):
+
+    def plant_model_real(self, transformation):
         """
         Define the model that is meant to describe the physical system
         :return: model f
         """
-        nx = self.nx
-        ntheta = self.ntheta
-        nu = self.nu
         A  = self.A
-
-        x = MX.sym('x', nx)
-        u = MX.sym('u', nu)
-        theta = MX.sym('theta', ntheta)
-
-        x_p = MX.sym('xp', np.shape(x)[0] * np.shape(theta)[0])
+        x = MX.sym('x', self.nx)
+        u = MX.sym('u', self.nu)
+        theta = MX.sym('theta', self.ntheta)
 
         if transformation:
             k  = exp( theta[0::2]- theta[1::2] *1e4 / 8.314 * (1 / (u[0] + 273.15) - 1 / (90 + 273)))
@@ -42,13 +38,21 @@ class Reactor_pfr_model:
         L = []  # x1 ** 2 + x2 ** 2 + 1*u1 ** 2 + 1*u2**2
         # Algebraic
         alg = []
+        return xdot, L, alg
 
+    def Generate_fun_integrator(self, sensitivity=False, transformation=True):
         # Calculate on the fly dynamic sensitivities without the need of perturbations
+        xdot, L, alg = self.plant_model_real(transformation)
+        x = MX.sym('x', self.nx)
+        u = MX.sym('u', self.nu)
+        theta = MX.sym('theta', self.ntheta)
+
         if sensitivity:
+            x_p = MX.sym('xp', np.shape(x)[0] * np.shape(theta)[0])
             xpdot = []
             for i in range(np.shape(theta)[0]):
-                xpdot = vertcat(xpdot, jacobian(xdot, x) @ (x_p[nx * i: nx * i + nx])
-                                + jacobian(xdot, theta)[nx * i: nx * i + nx])
+                xpdot = vertcat(xpdot, jacobian(xdot, x) @ (x_p[self.nx * i: self.nx * i + self.nx])
+                                + jacobian(xdot, theta)[self.nx * i: self.nx * i + self.nx])
                 f = Function('f', [x, u, theta, x_p], [xdot, L, xpdot],
                              ['x', 'u', 'theta', 'xp'], ['xdot', 'L', 'xpdot'])
         else:
