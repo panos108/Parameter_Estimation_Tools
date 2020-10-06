@@ -86,7 +86,7 @@ def construct_NLP_collocation(N_exp, f, x_0, x_init, lbx, ubx, lbu, ubu, lbtheta
             if divmod(k + 1, ms)[1] == 0:
                 x_plot += [Xk]
 
-                mle += maximum_likelihood_est(k_exp, Xk[:-1], x_meas_norm, [1,1,1,1], m, xmax)
+                mle += maximum_likelihood_est(k_exp, Xk[:-1], x_meas, [1,1,1,1], m, xmax*0+1)
 
                 chi2 += 2* maximum_likelihood_est(k_exp, Xk[:-1], x_meas, [0.005,0.005,0.003,0.003], m, [1.]*4)
 
@@ -1668,10 +1668,10 @@ def compute_Hessian(f, X):
                 X_c1     = X.copy()
                 X_c2     = X.copy()
 
-                X_left  +=  1e-4 * v[i,:] + 1e-4 * v[j,:]
-                X_right += -1e-4 * v[i,:] - 1e-4 * v[j,:]
-                X_c1    += -1e-4 * v[i,:] + 1e-4 * v[j,:]
-                X_c2    +=  1e-4 * v[i,:] - 1e-4 * v[j,:]
+                X_left  +=  1e-5 * v[i,:] + 1e-5 * v[j,:]
+                X_right += -1e-5 * v[i,:] - 1e-5 * v[j,:]
+                X_c1    += -1e-4 * v[i,:] + 1e-5 * v[j,:]
+                X_c2    +=  1e-5 * v[i,:] - 1e-5 * v[j,:]
 
 #                dmdx[i, j] =  (GP(X_left)[0].reshape((1,-1,)) -2 * GP(X_c)[0].reshape((1,-1,)) + GP(X_right)[0].reshape((1,-1,)))/(2/1e-4)**2
                 dsdx[i, j] =  (f(X_left)[1].reshape((1,-1,)) -f(X_c1)[1].reshape((1,-1,))-f(X_c2)[1].reshape((1,-1,)) + f(X_right)[1].reshape((1,-1,)))/(2 * 1e-4)**2

@@ -343,7 +343,7 @@ def collocation(f, d, s, nx, nu, lbx, ubx, lbw, ubw, w0, w,
         lbw.extend(lbx)
         ubw.extend(ubx)
         #                ubw.extend([u_meas[k_exp][1]])
-        w0.extend(x_meas[k_exp, :])#, m])
+        w0.extend(x_meas[k_exp, :]*0)#, m])
     #                w0.extend([u_meas[k_exp][1]])
 
     # Loop over collocation points
@@ -371,7 +371,7 @@ def collocation(f, d, s, nx, nu, lbx, ubx, lbw, ubw, w0, w,
     lbw.extend(lbx)
     ubw.extend(ubx)  # [:-1])
     #            ubw.extend([u_meas[k_exp][1]])
-    w0.extend(x_meas[k_exp, :])#, m])
+    w0.extend(x_meas[k_exp, :]*0)#, m])
     #            w0.extend([u_meas[k_exp][1]])
 
     # Add equality constraint
@@ -608,7 +608,8 @@ def give_data_from_exp(nu, nx, ntheta, N_exp, PC, date, file, info):
         u_meas[i, 3] = ul[i][0][2]
 
         u_meas[i, 0] = ul[i][0][-1]
-        x_meas[i, 0, 0] = c1o * u_meas[i, 1] / sum(u_meas[i, j] for j in range(1, nu[0]))
+        x_meas[i, 0, 0] = c1o * u_meas[i, 1]\
+                          / sum(u_meas[i, j] for j in range(1, nu[0]))
         x_meas[i, 1, 0] = 0.
         x_meas[i, 2, 0] = 0.
         x_meas[i, 3, 0] = 0.
@@ -942,7 +943,7 @@ def compute_Hessian(f, X):
             X_right = X.copy()
             X_c1 = X.copy()
             X_c2 = X.copy()
-            epsilon = 1e-6
+            epsilon = 1e-5
             X_left += epsilon * v[i, :] + epsilon* v[j, :]
             X_right += -epsilon * v[i, :] - epsilon * v[j, :]
             X_c1 += -epsilon* v[i, :] +epsilon* v[j, :]
@@ -989,7 +990,7 @@ def objective_cov(f, u, x_meas, N_exp, nx, n_points, nu, V, c1o, c2o,theta):
             # + np.random.multivariate_normal([0.] * nx[0], np.diag(np. square(sigma))).T
             x_meas1[s, :, i + 1] = np.array(x11.T)
             pp += 1
-            mle += maximum_likelihood_est(s, x_meas1[s,:-1,i+1] , x_meas_norm, [1, 1, 1, 1], i, xmax)
+            mle += maximum_likelihood_est(s, x_meas1[s,:-1,i+1] , x_meas_norm, [1, 1, 1, 1], i, xmax*0+1)
 
         s += 1
 

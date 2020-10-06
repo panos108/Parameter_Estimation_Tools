@@ -7,6 +7,8 @@ import time
 import scipy.stats as stats
 from pyDOE import *
 from GP_ut import *
+from PE_utilities import *
+from PE_models import *
 
 
 
@@ -80,10 +82,6 @@ ubxp = [inf] * ntheta[0] * nx[0]
 
 lbtheta = [-20.,0.] * 4#(ntheta[0])#[*[-20.] * (ntheta[0]-5), *[0] * 5]
 ubtheta =  [40.] * (ntheta[0])#[*[20.] * (ntheta[0]-5), *[2] * 5]# [60] * ntheta[0]
-
-# ---------------------------------------------
-# ----------- Set values for the inputs -----------
-
 lbu = [u_meas]  # [-1, -1]
 ubu = [u_meas]  # [1, 1]
 start = time.time()
@@ -93,6 +91,24 @@ for i in range(nx[0]-1):
     x_init[:N_exp, i] = x_meas[:N_exp, i, 0]
 x_init[:N_exp, -1] = c2o * u_meas[:N_exp,2]/sum(u_meas[:N_exp,i] for i in range(1,nu[0]))
 
+# ---------------------------------------------
+# ----------- Set values for the inputs -----------
+model = Reactor_pfr_model()
+pe = ParameterEstimation(Reactor_pfr_model)
+x_meas_pe = np.zeros([N_exp, nx[0],n_points+1])
+for i in range(nx[0]):
+    x_meas_pe[:,i,0]  = x_init[:N_exp,i]
+    if pe.measured[i]:
+        x_meas_pe[:,i,1:] = x_meas[:N_exp,i,1:]
+
+
+
+pe.solve_pe(x_meas_pe, u_meas, dt)
+
+#-------------------------------------------------#
+#-------------------test--------------------------#
+#-------------------------------------------------#
+
 problem, w0, lbw, ubw, lbg, ubg, trajectories, mle_fn = \
         construct_NLP_collocation(N_exp, f, x_0, x_init, lbx, ubx, lbu, ubu, lbtheta,
                               ubtheta, dt,
@@ -100,26 +116,30 @@ problem, w0, lbw, ubw, lbg, ubg, trajectories, mle_fn = \
                                   0.8+np.random.rand(ntheta[0]),#
                                   8, 25) #-----Change x_meas1 to x_meas ------#
 
-solver = nlpsol('solver', 'ipopt', problem)#, {"ipopt.hessian_approximation":"limited-memory"})#, {"ipopt.tol": 1e-10, "ipopt.print_level": 0})#, {"ipopt.hessian_approximation":"limited-memory"})
+solver = nlpsol('solver', 'ipopt', problem, {"ipopt.tol": 1e-12})#, {"ipopt.hessian_approximation":"limited-memory"})#, {"ipopt.tol": 1e-10, "ipopt.print_level": 0})#, {"ipopt.hessian_approximation":"limited-memory"})
 
 # Function to get x and u trajectories from w
 
 sol = solver(x0=w0, lbx=lbw, ubx=ubw, lbg=lbg, ubg=ubg)
 w_opt = sol['x'].full().flatten()
 
-problem, w0, lbw, ubw, lbg, ubg, trajectories, mle_fn = \
-        construct_NLP_RK4(N_exp, f, x_0, x_init, lbx, ubx, lbu, ubu, lbtheta,
-                              ubtheta, dt,
-                                   n_points, x_meas[:, :, 1:],
-                                  0.8+np.random.rand(ntheta[0]),#
-                                  8, 20) #-----Change x_meas1 to x_meas ------#
 
-solver = nlpsol('solver', 'ipopt', problem)#, {"ipopt.hessian_approximation":"limited-memory"})#, {"ipopt.tol": 1e-10, "ipopt.print_level": 0})#, {"ipopt.hessian_approximation":"limited-memory"})
 
-# Function to get x and u trajectories from w
 
-sol = solver(x0=w0, lbx=lbw, ubx=ubw, lbg=lbg, ubg=ubg)
-w_opt1 = sol['x'].full().flatten()
+#
+# problem, w0, lbw, ubw, lbg, ubg, trajectories, mle_fn = \
+#         construct_NLP_RK4(N_exp, f, x_0, x_init, lbx, ubx, lbu, ubu, lbtheta,
+#                               ubtheta, dt,
+#                                    n_points, x_meas[:, :, 1:],
+#                                   0.8+np.random.rand(ntheta[0]),#
+#                                   8, 20) #-----Change x_meas1 to x_meas ------#
+#
+# solver = nlpsol('solver', 'ipopt', problem)#, {"ipopt.hessian_approximation":"limited-memory"})#, {"ipopt.tol": 1e-10, "ipopt.print_level": 0})#, {"ipopt.hessian_approximation":"limited-memory"})
+#
+# # Function to get x and u trajectories from w
+#
+# sol = solver(x0=w0, lbx=lbw, ubx=ubw, lbg=lbg, ubg=ubg)
+w_opt1 = w_opt#sol['x'].full().flatten()
 #bayopt_pe(f, lbtheta, ubtheta, nu, nx, x_meas[:,:,1:], n_points, ntheta[0], u_meas,N_exp, V, c1o, c2o, w_opt[:8])
 
 
