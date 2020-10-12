@@ -62,7 +62,7 @@ def construct_NLP_collocation(N_exp, f, x_0, x_init, lbx, ubx, lbu, ubu, lbtheta
         w0.extend(x_init[k_exp][:].tolist())
 
 
-        x_plot += [Xk]
+        # x_plot += [Xk]
 
         Uk = MX.sym('U_' + str(k_exp), nu)
         w += [Uk]
@@ -86,7 +86,7 @@ def construct_NLP_collocation(N_exp, f, x_0, x_init, lbx, ubx, lbu, ubu, lbtheta
             if divmod(k + 1, ms)[1] == 0:
                 x_plot += [Xk]
 
-                mle += maximum_likelihood_est(k_exp, Xk[:-1], x_meas, [1,1,1,1], m, xmax*0+1)
+                mle += maximum_likelihood_est(k_exp, Xk[:-1], x_meas_norm, [1,1,1,1], m, xmax)
 
                 chi2 += 2* maximum_likelihood_est(k_exp, Xk[:-1], x_meas, [0.005,0.005,0.003,0.003], m, [1.]*4)
 

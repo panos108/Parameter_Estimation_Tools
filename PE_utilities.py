@@ -40,8 +40,8 @@ def construct_polynomials_basis(d, poly_type):
 
 class ParameterEstimation:
 
-    def __init__(self, Model_Def, collocation_degree = 8, intermediate_elements=25,
-                 N_exp_max=80, t_span=2):
+    def __init__(self, Model_Def, collocation_degree = 8, intermediate_elements=10,
+                 N_exp_max=80, t_span=2,use_nominal=False):
         self.Model_def = Model_Def             # Take class of the dynamic system
         self.dc        = collocation_degree    # Define the degree of collocation
         self.int_elem  = intermediate_elements # Define the Horizon of the problem
@@ -50,21 +50,23 @@ class ParameterEstimation:
         self.f, self.nu, self.nx, self.ntheta = self.Model_def.Generate_fun_integrator(sensitivity=False)
         self.measured  = self.Model_def.measured
 
-        theta0        = self.Model_def.bounds_theta[0]
-
+        theta0        = (np.array(self.Model_def.bounds_theta[0]) +np.array(self.Model_def.bounds_theta[1]))/2
+        #np.array([2.25962, 0, -0.0360131, 0.4059,2,2,2,2])#
         # Define options for solver
         opts = {}
         opts["expand"] = True
-        opts["ipopt.print_level"] = 5
+        opts["ipopt.print_level"] = 0
         opts["ipopt.max_iter"] = 1000
         opts["ipopt.tol"] = 1e-12
         opts["calc_lam_p"] = False
         opts["calc_multipliers"] = False
         opts["ipopt.print_timing_statistics"] = "no"
-        opts["print_time"] = True
+        opts["print_time"] = False
         self.opts = opts
+        self.f_normal, _,_,_ = self.Model_def.Generate_fun_integrator(sensitivity=False,
+                                                                      transformation=not use_nominal)
 
-        self.Construct_col(self.Model_def.bounds_theta, theta0)
+        self.Construct_col(self.f_normal, self.Model_def.bounds_theta, theta0)
 
         self.Construct_NLP(self.Model_def.bounds_theta, theta0)
 
@@ -207,6 +209,8 @@ class ParameterEstimation:
                 x_measured += [Xk]
                 mle += self.maximum_likelihood_est(k_exp, Xk, x_meas,
                                                    self.Model_def.normalize_data, k)*shrink[k_exp]
+                chi2 += self.maximum_likelihood_est(k_exp, Xk, x_meas,
+                                                   self.Model_def.standard_deviation, k)*shrink[k_exp]
                         # chi2 += 2 * maximum_likelihood_est(k_exp, Xk[:-1], x_meas, [0.005, 0.005, 0.003, 0.003], m,
                         #                                    [1.] * 4)*shrink[k_exp]
 
@@ -231,10 +235,11 @@ class ParameterEstimation:
         p += [shrink]
         # Create an NLP solver
         problem = {'f': mle, 'x': vertcat(*w), 'p': vertcat(*p),'g': vertcat(*g)}
-        trajectories = Function('trajectories', [vertcat(*w)]
-                                , [horzcat(*x_plot), horzcat(*u_plot), horzcat(*x_plotp), chi2, thetak, horzcat(*x_measured)], ['w'],
+        trajectories = Function('trajectories', [vertcat(*w),vertcat(*p)]
+                                , [horzcat(*x_plot), horzcat(*u_plot), horzcat(*x_plotp),
+                                   chi2, mle, thetak, horzcat(*x_measured)], ['w', 'p'],
                                 ['x', 'u', 'xp',
-                                 'chi2', 'theta', 'x_measured'])
+                                 'chi2', 'mle', 'theta', 'x_measured'])
 
         solver = nlpsol('solver', 'ipopt', problem, self.opts)  # 'bonmin', prob, {"discrete": discrete})#'ipopt', prob, {'ipopt.output_file': 'error_on_fail'+str(ind)+'.txt'})#
         self.solver, self.trajectories, self.w0, self.lbw, self.ubw, self.lbg, self.ubg = \
@@ -410,13 +415,13 @@ class ParameterEstimation:
                           p=p0)
 
         w_opt = sol['x'].full().flatten()
-        x_opt, u_opt, xp_opt, chi2, theta, x_measured = self. trajectories(sol['x'])
+        x_opt, u_opt, xp_opt, chi2, mle, theta, x_measured = self. trajectories(sol['x'],p0)
         if self.solver.stats()['return_status'] != 'Solve_Succeeded':
             print('Opt failed')
 
         self.obj   = sol['f'].full().flatten()
         self.theta = np.array(theta)
-        return u_opt, x_opt, w_opt, x_measured, theta
+        return u_opt, x_opt, w_opt, x_measured, theta, chi2, mle
 
 
     def hessian_compute(self, theta=None):
@@ -424,9 +429,16 @@ class ParameterEstimation:
             theta = self.theta
         self.hessian = self.h_fn(theta, self.p0)
 
-    def Confidence_intervals(self, theta=None, confidence=0.95):
-        if theta == None:
+    def Confidence_intervals(self, theta=[None], confidence=0.95, Transformed=True):
+        if theta[0] == None:
             theta = self.theta
+            if not Transformed:
+                if hasattr(self.Model_def, 'tranformed'):
+                    if hasattr(self.Model_def,'transformations_parameters'):
+                        theta = self.Model_def.transformations_parameters(theta)
+                    else:
+                        print('NEED TO GIVE THE FUNC. SAME THETA ARE TAKEN')
+
         self.hessian = self.h_fn(theta, self.p0)
         inverse_hessian = np.linalg.inv(self.hessian)
         t = np.zeros([self.ntheta])
@@ -437,6 +449,13 @@ class ParameterEstimation:
         chi2  = self.mle(theta, self.p0)
 
         statistics = {'CI':CI, 't':t, 'chi2':chi2, 't_ref':t_ref}
+
+
+
+
+
+
+
         return CI, t, t_ref, chi2, statistics
 
 
@@ -448,15 +467,13 @@ class ParameterEstimation:
 
 
 
-    def Construct_col(self, bounds_theta, theta0):
+    def Construct_col(self, f, bounds_theta, theta0):
             # def construct_NLP_collocation(N_exp, f, x_0, x_init, lbx, ubx, lbu, ubu, lbtheta, ubtheta,
             #                               dt, N, x_meas, theta0, d, ms):
 
         nx = self.nx
         ntheta = self.ntheta
         nu = self.nu
-        lbtheta = bounds_theta[0]
-        ubtheta = bounds_theta[1]
 
         x01 = MX.sym('x_0', (self.N_exp_max * nx))
         x_meas1 = MX.sym('x_exp', ((self.t_span - 1) * self.N_exp_max * nx))
@@ -468,48 +485,25 @@ class ParameterEstimation:
         x_meas = reshape(x_meas1, (nx, (self.t_span - 1) * self.N_exp_max))
         u_meas = reshape(u_meas1, (nu, (self.t_span - 1) * self.N_exp_max))
 
-        w = []
-        w0 = []
-        lbw = []
-        ubw = []
-
-
-        x_plot = []
-        u_plot = []
         mle = 0
         s = 0
 
         thetak = MX.sym('theta', ntheta)
-        w += [thetak]
 
-        lbw.extend(lbtheta)
-        ubw.extend(ubtheta)
-
-        w0.extend(theta0)
         for k_exp in range(self.N_exp_max):
             if s > 0:
                 s += 1
             # "Lift" initial conditions
             Xk = x0.T[k_exp, :].T#MX.sym('X_' + str(s), nx)
-            w += [Xk]
-            lbw.extend([-inf] * nx)  # x_init[k_exp][:].tolist())
-            ubw.extend([+inf] * nx)  # x_init[k_exp][:].tolist())
-            w0.extend([0] * nx)  # x_init[k_exp][:].tolist())
 
-            x_plot += [Xk]
 
-            ms = self.int_elem*2
+            ms = self.int_elem*5
             for k in range((self.t_span - 1)):
                 if s > 0:
                     s += 1
                 # New NLP variable for the control
                 Uk = u_meas.T[k_exp * (self.t_span - 1) + k, :].T * shrink[k_exp]#MX.sym('U_' + str(k_exp * (self.t_span - 1) + k), nu)
-                w += [Uk]
-                lbw.extend([-inf] * nu)
-                ubw.extend([+inf] * nu)
-                w0.extend([0.] * nu)
 
-                u_plot += [Uk]
 
                 h = dt[k_exp * (self.t_span - 1) + k] / ms
                 s = 0
@@ -518,13 +512,11 @@ class ParameterEstimation:
                     # State at collocation points
                     # ---------------------------------
 
-                    k1, _ = self.f(Xk, Uk, thetak)
-                    k2, _ = self.f(Xk + h / 2 * k1, Uk, thetak)
-                    k3, _ = self.f(Xk + h / 2 * k2, Uk, thetak)
-                    k4, _ = self.f(Xk + h * k3, Uk, thetak)
+                    k1, _ = f(Xk, Uk, thetak)
+                    k2, _ = f(Xk + h / 2 * k1, Uk, thetak)
+                    k3, _ = f(Xk + h / 2 * k2, Uk, thetak)
+                    k4, _ = f(Xk + h * k3, Uk, thetak)
                     Xk = Xk + h / 6 * (k1 + 2 * k2 + 2 * k3 + k4)
-
-                    x_plot += [Xk]
                     s += 1
 
                 mle += self.maximum_likelihood_est(k_exp, Xk, x_meas, self.Model_def.standard_deviation, k) * shrink[k_exp]
