@@ -40,7 +40,7 @@ def plant_model_real(sens):
         for i in range(np.shape(theta)[0]):
             xpdot = vertcat(xpdot, jacobian(xdot, x) @ (x_p[nx * i: nx * i + nx])
                             + jacobian(xdot, theta)[nx * i: nx * i + nx])
-            f = Function('f', [x, u, theta, x_p], [xdot, L, xpdot],
+        f = Function('f', [x, u, theta, x_p], [xdot, L, xpdot],
                          ['x', 'u', 'theta', 'xp'], ['xdot', 'L', 'xpdot'])
     else:
         f = Function('f', [x, u, theta], [xdot, L], ['x', 'u', 'theta'], ['xdot', 'L'])

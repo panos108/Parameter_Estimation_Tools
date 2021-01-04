@@ -10,11 +10,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
+            <state relative-caret-position="5400">
+              <caret line="270" column="13" lean-forward="true" selection-start-line="270" selection-start-column="13" selection-end-line="272" selection-end-column="10" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ut.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="64" column="15" selection-start-line="64" selection-end-line="65" />
+            <state relative-caret-position="291">
+              <caret line="1256" column="32" selection-start-line="1256" selection-start-column="32" selection-end-line="1257" selection-end-column="37" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utilities_leeds.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7200">
-              <caret line="360" selection-start-line="360" selection-end-line="360" />
+            <state relative-caret-position="100">
+              <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <element signature="e#32081#32983#0" />
@@ -50,20 +50,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PE_utilities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="53" column="60" selection-start-line="53" selection-start-column="60" selection-end-line="53" selection-end-column="60" />
+            <state relative-caret-position="305">
+              <caret line="693" column="47" selection-start-line="693" selection-start-column="47" selection-end-line="693" selection-end-column="47" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+                <element signature="e#121#1292#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sonogashira simple.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="42" column="28" lean-forward="true" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+            <state relative-caret-position="260">
+              <caret line="34" column="24" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="24" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -72,12 +73,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PSO_PE.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+              <folding>
+                <element signature="e#2#33#0" expanded="true" />
+                <element signature="e#1648#1875#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PE_models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="295" column="4" selection-start-line="295" selection-start-column="4" selection-end-line="295" selection-end-column="4" />
+            <state relative-caret-position="1820">
+              <caret line="958" selection-start-line="958" selection-end-line="958" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+                <element signature="e#2278#3292#0" />
+                <element signature="e#6900#12156#0" />
+                <element signature="e#29358#34960#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../GP-RTO-EI/plots_RTO.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1320">
+              <caret line="349" selection-start-line="349" selection-end-line="349" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,31 +123,41 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GP_t</find>
-      <find>objective_co</find>
-      <find>colloca</find>
-      <find>GP_model</find>
-      <find>maxim</find>
-      <find>x_meas</find>
-      <find>x0</find>
-      <find>u_meas</find>
-      <find>collocation</find>
-      <find>RK4</find>
-      <find>MX</find>
-      <find>collo</find>
-      <find>COLLOCATION</find>
-      <find>SX</find>
-      <find>hessian</find>
       <find>objec</find>
       <find>Construct_col</find>
       <find>construct</find>
       <find>ref</find>
-      <find>self.dof</find>
       <find>free</find>
+      <find>self.dof</find>
+      <find>.T[</find>
+      <find>solve_pe</find>
+      <find>Generate_fun_integrator</find>
+      <find>maximum_likelihood_est</find>
+      <find>inte</find>
+      <find>integr</find>
+      <find>u_meas</find>
+      <find>ipopt</find>
+      <find>bfgs</find>
+      <find>construc</find>
+      <find>numpy</find>
+      <find>construct_total</find>
+      <find>ipop</find>
+      <find>generate</find>
+      <find>Reactor_pfr_model_Sonogashira_general_order_polynomial</find>
+      <find>polyno</find>
+      <find>order</find>
+      <find>0.005</find>
+      <find>eval</find>
+      <find>general:</find>
+      <find>Reactor_pfr_model_Sonogashira_general</find>
+      <find>Construct_total_integrator</find>
+      <find>integrator_model</find>
+      <find>integrat</find>
     </findStrings>
     <replaceStrings>
       <replace>SX</replace>
       <replace>MX</replace>
+      <replace>np</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -128,26 +167,26 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/solver_trial.py" />
-        <option value="$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py" />
-        <option value="$PROJECT_DIR$/utilities_leeds.py" />
         <option value="$PROJECT_DIR$/ut.py" />
+        <option value="$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py" />
+        <option value="$PROJECT_DIR$/PSO_PE.py" />
+        <option value="$PROJECT_DIR$/utilities_leeds.py" />
         <option value="$PROJECT_DIR$/PE_utilities.py" />
-        <option value="$PROJECT_DIR$/PE_models.py" />
         <option value="$PROJECT_DIR$/sonogashira simple.py" />
+        <option value="$PROJECT_DIR$/PE_models.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="1290" />
-    <option name="height" value="687" />
+    <option name="x" value="-12" />
+    <option name="width" value="981" />
+    <option name="height" value="1152" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,14 +199,26 @@
               <item name="Parameter_Estimation_Tools" type="462c0819:PsiDirectoryNode" />
               <item name="Sonogashira_data" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Parameter_Estimation_Tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Parameter_Estimation_Tools" type="462c0819:PsiDirectoryNode" />
+              <item name="PE_utilities.py" type="8704e2dd:PyFileNode" />
+            </path>
+            <path>
+              <item name="Parameter_Estimation_Tools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Parameter_Estimation_Tools" type="462c0819:PsiDirectoryNode" />
+              <item name="PE_utilities.py" type="8704e2dd:PyFileNode" />
+              <item name="ParameterEstimation" type="dd8bbb05:PyElementNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sonogashira simple.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GP-RTO-EI/plots_RTO.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -188,7 +239,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="main_for_leeds_wait_for_req_copy" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="PSO_PE" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Parameter_Estimation_Tools" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -233,7 +284,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="775" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19698173" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -241,33 +293,33 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32763976" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.49822694" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49960285" visible="true" weight="0.2204969" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32919255" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32919255" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50039715" side_tool="true" weight="0.40062112" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3280142" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19698173" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32763976" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.40062112" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32919255" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32919255" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32919255" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.08113804" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Python Console" order="3" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3280142" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -278,17 +330,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py</url>
-          <line>265</line>
+          <line>267</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py</url>
-          <line>155</line>
+          <line>157</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py</url>
-          <line>148</line>
+          <line>150</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -308,57 +360,83 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
-          <line>217</line>
+          <line>224</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
-          <line>173</line>
+          <line>180</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
-          <line>153</line>
+          <line>160</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
-          <line>123</line>
+          <line>130</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
-          <line>110</line>
+          <line>117</line>
           <option name="timeStamp" value="115" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
-          <line>60</line>
+          <line>67</line>
           <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py</url>
+          <line>107</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="121" />
+          <line>65</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sonogashira simple.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PE_utilities.py</url>
+          <line>722</line>
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PSO_PE.py</url>
+          <line>141</line>
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PE_models.py</url>
+          <line>734</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PE_models.py</url>
+          <line>738</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PE_utilities.py</url>
+          <line>672</line>
+          <option name="timeStamp" value="154" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="309" selection-start-line="309" selection-end-line="309" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Sensitivity analysis QM/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -424,13 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/site-packages/numpy/linalg/linalg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/.ptmp358896/python/implicit_runge-kutta.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -445,37 +516,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/site-packages/casadi/casadi.py">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/site-packages/numpy/core/multiarray.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12213" selection-start-line="12213" selection-end-line="12213" />
+        <state relative-caret-position="60">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/site-packages/numpy/linalg/linalg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
+        <state relative-caret-position="117">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/site-packages/deap/tools/init.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-865268914/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="1201" column="8" selection-start-line="1201" selection-start-column="8" selection-end-line="1201" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6160">
+          <caret line="309" selection-start-line="309" selection-end-line="309" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/trial/Lib/site-packages/casadi/casadi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="12212" column="11" lean-forward="true" selection-start-line="12212" selection-start-column="11" selection-end-line="12212" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../aspen_exmple/simple example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ut.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="64" column="15" selection-start-line="64" selection-end-line="65" />
+        <state relative-caret-position="291">
+          <caret line="1256" column="32" selection-start-line="1256" selection-start-column="32" selection-end-line="1257" selection-end-column="37" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Leeds_working_space - ss - Exp - BO/utilities_leeds.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="349" column="22" selection-start-line="349" selection-start-column="22" selection-end-line="349" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#6505#8918#0" />
+            <element signature="e#8945#9111#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Leeds_working_space - ss - Exp - BO/ut.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="635" column="32" lean-forward="true" selection-start-line="635" selection-start-column="32" selection-end-line="635" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PSO_PE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding>
+            <element signature="e#2#33#0" expanded="true" />
+            <element signature="e#1648#1875#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PE_utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="693" column="47" selection-start-line="693" selection-start-column="47" selection-end-line="693" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#121#1292#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utilities_leeds.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7200">
-          <caret line="360" selection-start-line="360" selection-end-line="360" />
+        <state relative-caret-position="100">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <element signature="e#32081#32983#0" />
@@ -483,32 +640,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PE_utilities.py">
+    <entry file="file://$PROJECT_DIR$/sonogashira simple.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="53" column="60" selection-start-line="53" selection-start-column="60" selection-end-line="53" selection-end-column="60" />
+        <state relative-caret-position="260">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="24" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PE_models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="295" column="4" selection-start-line="295" selection-start-column="4" selection-end-line="295" selection-end-column="4" />
+        <state relative-caret-position="1820">
+          <caret line="958" selection-start-line="958" selection-end-line="958" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#2278#3292#0" />
+            <element signature="e#6900#12156#0" />
+            <element signature="e#29358#34960#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sonogashira simple.py">
+    <entry file="file://$PROJECT_DIR$/../GP-RTO-EI/plots_RTO.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="42" column="28" lean-forward="true" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+        <state relative-caret-position="1320">
+          <caret line="349" selection-start-line="349" selection-end-line="349" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_for_leeds_wait_for_req_copy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5400">
+          <caret line="270" column="13" lean-forward="true" selection-start-line="270" selection-start-column="13" selection-end-line="272" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -12,24 +12,31 @@ xl = np.array(dfs['Sheet1'])
 X = np.array(xl[-80:99, [1,2,3]])
 F = np.array(xl[-80:99, [9,11,13]])
 
-N = 50
+N = 70
+#x_meas = np.zeros([N,14,2])
 x_meas = np.zeros([N,4,2])
+
 u_meas = np.zeros([N,4,1])
 x_meas[:,0,0]   = xl[-N:99, 7]
 x_meas[:,3,0]   = xl[-N:99, 8]
-x_meas[:,:-1,1] = xl[-N:99, [10, 12, 14]]
+x_meas[:,:3,1] = xl[-N:99, [10, 12, 14]]
+#x_meas[:,4,0]   = xl[-N:99,17]
+#x_meas[:,9,0]   = xl[-N:99,17]
+
 u_meas[:,:,0]   = xl[-N:99, 3:7]
 dt = np.array(xl[-N:99, [1]])
 
+#model0 = Reactor_pfr_model_Sonogashira_general_order_polynomial(powers=[1,2,1,2])#Reactor_pfr_model_Sonogashira_hybrid()  # normalize=x_meas[:,:,1].max(0))
+#model0 = Reactor_pfr_model_Sonogashira_general_order(powers=[1,2,1,2])#Reactor_pfr_model_Sonogashira_hybrid()  # normalize=x_meas[:,:,1].max(0))
+
 model0 = Reactor_pfr_model_Sonogashira_hybrid()  # normalize=x_meas[:,:,1].max(0))
+#Reactor_pfr_model_Sonogashira_general()#
 
-f, _, _, _ = model0.Generate_fun_integrator()
-
-pe = ParameterEstimation(model0)
+pe = ParameterEstimation(model0, print_level=5)
 
 u_opt, _, w_opt, x_pred, theta, chi2, mle = pe.solve_pe(x_meas, u_meas, dt)
 
-CI, t, t_ref, _, statistics = pe.Confidence_intervals()
+CI, t, t_ref, _, statistics = pe.Confidence_intervals_expected()
 print('Chi2: ', chi2)
 print('mle: ', mle)
 print('t: ', t)
@@ -51,7 +58,7 @@ for i in range(80):
     x_his[i] = np.array(x1).reshape((-1,))
 x2 = np.array(x_pred)
 plt.plot(x_meas1[-N:, :-1, 1], x_his.T[:-1, -N:].T, 'o')
-plt.plot(x_meas1[:N, :-1, 1], x_his.T[:-1, :N].T, 'r*')
+plt.plot(x_meas1[:(80-N), :-1, 1], x_his.T[:-1, :(80-N)].T, 'r*')
 
 plt.plot([0, np.max(x2[:-1, :].T)], [0, np.max(x2[:-1, :].T)], 'k-')
 plt.xlabel('Measured Concentration(M)')

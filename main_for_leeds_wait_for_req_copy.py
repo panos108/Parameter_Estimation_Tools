@@ -20,16 +20,17 @@ T = 200.
 N_exp    = 8#5
 PC       = 'Panos'
 #PC       =  'ppets' #For laptop
-labbot   = True
+labbot   = False
 file     = ['NaN']*N_exp
-date     = '28-Jan-2020/20200128-Panos'#'16-Jan-2020/20200116-Panos-2/20200116-Panos-2'#'trial/20190906_UCL_Panos_3'##'03-Sep-2019/20190903_UCL_Panos'#'07-Oct-2019/Run3/20191007_UCL_SS3'##
-info     = '/Exp_Setup_Info_28-January-2020_11_26_27.csv'#'/Exp_Setup_Info_16-January-2020_14_29_54.csv'#
-condition= '/Process_Conditions_Bounds_28-January-2020_11_26_27.csv'#'/Process_Conditions_Bounds_16-January-2020_14_29_54.csv'#
+
+# date     = '28-Jan-2020/20200128-Panos'#'16-Jan-2020/20200116-Panos-2/20200116-Panos-2'#'trial/20190906_UCL_Panos_3'##'03-Sep-2019/20190903_UCL_Panos'#'07-Oct-2019/Run3/20191007_UCL_SS3'##
+# info     = '/Exp_Setup_Info_28-January-2020_11_26_27.csv'#'/Exp_Setup_Info_16-January-2020_14_29_54.csv'#
+# condition= '/Process_Conditions_Bounds_28-January-2020_11_26_27.csv'#'/Process_Conditions_Bounds_16-January-2020_14_29_54.csv'#
 
 
-#date1      = '06-Sep-2019/20190906_UCL_Panos_3'#'trial/20190906_UCL_Panos_3'##'03-Sep-2019/20190903_UCL_Panos'#'07-Oct-2019/Run3/20191007_UCL_SS3'##
-##info1      = '/Exp_Setup_Info_06-September-2019_11_34_19.csv'#
-#condition1 = '/Process_Conditions_Bounds_06-September-2019_11_34_19.csv'#
+date      = '06-Sep-2019/20190906_UCL_Panos_3'#'trial/20190906_UCL_Panos_3'##'03-Sep-2019/20190903_UCL_Panos'#'07-Oct-2019/Run3/20191007_UCL_SS3'##
+info      = '/Exp_Setup_Info_06-September-2019_11_34_19.csv'#
+condition = '/Process_Conditions_Bounds_06-September-2019_11_34_19.csv'#
 
 bayesopt = True
 
@@ -94,7 +95,8 @@ x_init[:N_exp, -1] = c2o * u_meas[:N_exp,2]/sum(u_meas[:N_exp,i] for i in range(
 # ---------------------------------------------
 # ----------- Set values for the inputs -----------
 model = Reactor_pfr_model()
-pe = ParameterEstimation(Reactor_pfr_model)
+pe = ParameterEstimation(model,intermediate_elements=50,
+                 N_exp_max=12, t_span=2,use_nominal=False, print_level=5)
 x_meas_pe = np.zeros([N_exp, nx[0],n_points+1])
 for i in range(nx[0]):
     x_meas_pe[:,i,0]  = x_init[:N_exp,i]
